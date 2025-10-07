@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Money Manager Pro - Enhanced</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  </head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="header-icon"><i class="fas fa-wallet"></i></div>
+    <h1>Money Manager Pro</h1>
+    <p>✨ Kelola keuangan bisnis Anda dengan mudah dan profesional ✨</p>
+  </div>
+  
+  <div class="nav">
+    <button class="nav-btn active" data-page="page1">
+      <span><i class="fas fa-chart-pie"></i> Pembagi Otomatis</span>
+    </button>
+    <button class="nav-btn" data-page="page2">
+      <span><i class="fas fa-calculator"></i> Hitung Modal Bahan</span>
+    </button>
+    <button class="nav-btn" data-page="page3">
+      <span><i class="fas fa-chart-line"></i> Statistik & Laporan</span>
+    </button>
+  </div>
+
+  <!-- PAGE 1: Pembagi Otomatis -->
+  <div id="page1" class="page active">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+        <div>
+          <h2>Pembagi Otomatis</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px">
+            <i class="fas fa-info-circle"></i> 50% Modal • 30% Tabungan • 10% Jajan
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-wallet"></i> Total Pemasukan (Rp)</label>
+        <input id="pemasukan" type="text" placeholder="Contoh: 500.000">
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-store"></i> Modal Bahan (Rp)</label>
+        <input id="modalBahan" type="text" placeholder="Contoh: 200.000">
+      </div>
+
+      <div class="button-group">
+        <button id="hitungBtn" class="primary"><i class="fas fa-calculator"></i> Hitung Pembagian</button>
+        <button id="simpanBtn" class="ghost"><i class="fas fa-save"></i> Simpan ke Riwayat</button>
+        <button id="resetBtn" class="ghost"><i class="fas fa-redo"></i> Reset Data</button>
+      </div>
+
+      <div id="pesan"></div>
+
+      <div id="hasilArea" style="display:none">
+        <div class="result">
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-undo"></i> Balik Modal</div>
+            <div id="balikModal" class="tile-value">Rp0</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-plus-circle"></i> Tambahan Modal</div>
+            <div id="tambahanModal" class="tile-value">Rp0</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-piggy-bank"></i> Tabungan</div>
+            <div id="tabungan" class="tile-value">Rp0</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-cookie-bite"></i> Jajan</div>
+            <div id="jajan" class="tile-value">Rp0</div>
+          </div>
+        </div>
+
+        <div style="margin-top:40px">
+          <h3 style="margin-bottom:20px;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:12px">
+            <i class="fas fa-history" style="color:var(--accent)"></i> Riwayat Transaksi
+          </h3>
+          <div style="overflow-x:auto;border-radius:16px;border:2px solid rgba(99,102,241,0.2);backdrop-filter:blur(10px)">
+            <table id="historyTable">
+              <thead>
+                <tr>
+                  <th><i class="fas fa-calendar"></i> Tanggal</th>
+                  <th><i class="fas fa-money-bill"></i> Pemasukan</th>
+                  <th><i class="fas fa-box"></i> Modal</th>
+                  <th><i class="fas fa-piggy-bank"></i> Tabungan</th>
+                  <th><i class="fas fa-candy-cane"></i> Jajan</th>
+                  <th><i class="fas fa-arrow-up"></i> Tambahan Modal</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Hitung Modal Bahan -->
+  <div id="page2" class="page">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-box-open"></i></div>
+        <div>
+          <h2>Hitung Modal Bahan Per Produk</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px">
+            <i class="fas fa-info-circle"></i> Hitung biaya produksi per unit dengan akurat
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-tag"></i> Nama Bahan</label>
+        <input id="namaBahan" type="text" placeholder="Contoh: PVC, Kayu, Kain, dll">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label><i class="fas fa-ruler"></i> Total Bahan</label>
+          <input id="totalBahan" type="text" placeholder="Contoh: 10">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-balance-scale"></i> Unit Total</label>
+          <select id="unitTotal">
+            <option value="meter">Meter (m)</option>
+            <option value="liter">Liter (L)</option>
+            <option value="kg">Kilogram (kg)</option>
+            <option value="pcs">Pieces (pcs)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-dollar-sign"></i> Harga Total Bahan (Rp)</label>
+        <input id="hargaTotal" type="text" placeholder="Contoh: 300.000">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label><i class="fas fa-cubes"></i> Kebutuhan Per Produk</label>
+          <input id="kebutuhanProduk" type="text" placeholder="Contoh: 15">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-ruler-combined"></i> Unit Per Produk</label>
+          <select id="unitProduk">
+            <option value="cm">Centimeter (cm)</option>
+            <option value="meter">Meter (m)</option>
+            <option value="ml">Mililiter (ml)</option>
+            <option value="gram">Gram (g)</option>
+            <option value="pcs">Pieces (pcs)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-plus"></i> Biaya Tambahan Per Produk (Rp)</label>
+        <input id="biayaTambahan" type="text" placeholder="Contoh: 5.000 (opsional)">
+      </div>
+
+      <div class="button-group">
+        <button id="hitungBtn2" class="primary"><i class="fas fa-calculator"></i> Hitung Modal</button>
+        <button id="resetBtn2" class="ghost"><i class="fas fa-redo"></i> Reset Form</button>
+      </div>
+
+      <div id="pesan2"></div>
+
+      <div id="hasilArea2" style="display:none">
+        <div class="result">
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-coins"></i> Modal Per Produk</div>
+            <div id="modalPerProduk" class="tile-value">Rp0</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label"><i class="fas fa-warehouse"></i> Sisa Total Bahan</div>
+            <div id="sisaBahan" class="tile-value">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: Statistik -->
+  <div id="page3" class="page">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+        <h2>Statistik & Laporan Keuangan</h2>
+      </div>
+
+      <div class="stats-summary" id="statsArea">
+        <div class="stat-card">
+          <h4><i class="fas fa-arrow-up"></i> Total Pemasukan</h4>
+          <div class="value" id="totalPemasukan">Rp0</div>
+        </div>
+        <div class="stat-card">
+          <h4><i class="fas fa-box"></i> Total Modal</h4>
+          <div class="value" id="totalModal">Rp0</div>
+        </div>
+        <div class="stat-card">
+          <h4><i class="fas fa-piggy-bank"></i> Total Tabungan</h4>
+          <div class="value" id="totalTabungan">Rp0</div>
+        </div>
+        <div class="stat-card">
+          <h4><i class="fas fa-ice-cream"></i> Total Jajan</h4>
+          <div class="value" id="totalJajan">Rp0</div>
+        </div>
+        <div class="stat-card">
+          <h4><i class="fas fa-receipt"></i> Jumlah Transaksi</h4>
+          <div class="value" id="totalTransaksi">0</div>
+        </div>
+      </div>
+
+      <div id="emptyStats" class="empty-state">
+        <i class="fas fa-chart-line"></i>
+        <h3>Belum Ada Data</h3>
+        <p>Mulai simpan transaksi untuk melihat statistik</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
