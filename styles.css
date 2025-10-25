@@ -1,18 +1,18 @@
 :root {
-  --primary: #1e3a8a; /* Navy deep untuk elemen utama */
-  --primary-dark: #172554; /* Navy lebih gelap untuk gradien */
-  --secondary: #64748b; /* Abu-abu perak untuk elemen pendukung */
-  --accent: #d4af37; /* Emas lembut untuk highlight */
-  --success: #059669; /* Hijau tua untuk notifikasi sukses */
-  --warning: #d97706; /* Oranye tua untuk peringatan */
-  --danger: #b91c1c; /* Merah tua untuk error */
-  --dark: #0f172a; /* Latar gelap */
-  --card: rgba(30,41,59,0.9); /* Kartu dengan transparansi */
-  --card-light: #334155; /* Abu-abu gelap untuk variasi */
-  --text: #f8fafc; /* Putih krem untuk teks utama */
-  --text-muted: #cbd5e1; /* Abu-abu terang untuk teks sekunder */
-  --border: rgba(148,163,184,0.2); /* Border halus */
-  --glow: rgba(30,64,175,0.3); /* Glow biru tua (untuk elemen lain) */
+  --primary: #1e3a8a; 
+  --primary-dark: #172554; 
+  --secondary: #64748b; 
+  --accent: #d4af37;
+  --success: #059669; 
+  --warning: #d97706; 
+  --danger: #b91c1c; 
+  --dark: #0f172a; 
+  --card: rgba(30,41,59,0.9); 
+  --card-light: #334155; 
+  --text: #f8fafc;
+  --text-muted: #cbd5e1; 
+  --border: rgba(148,163,184,0.2); 
+  --glow: rgba(30,64,175,0.3);
 }
 
 * {
@@ -31,7 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Latar Belakang Halus */
 body::before {
   content: '';
   position: fixed;
@@ -51,7 +50,6 @@ body::before {
   z-index: 1;
 }
 
-/* Header */
 .header {
   text-align: center;
   margin-bottom: 60px;
@@ -61,7 +59,7 @@ body::before {
 .header-icon {
   font-size: 3.5rem;
   display: inline-block;
-  color: var(--accent); /* Emas lembut untuk ikon */
+  color: var(--accent); 
   transition: transform 0.3s ease;
   animation: scaleIn 0.5s ease;
 }
@@ -86,7 +84,6 @@ body::before {
   animation: fadeIn 1s ease 0.2s both;
 }
 
-/* Navigasi */
 .nav {
   display: flex;
   gap: 12px;
@@ -143,7 +140,7 @@ body::before {
 }
 
 .nav button span i {
-  color: var(--accent); /* Emas untuk ikon navigasi */
+  color: var(--accent); 
   transition: transform 0.3s ease;
 }
 
@@ -151,7 +148,6 @@ body::before {
   transform: scale(1.1);
 }
 
-/* Page Transitions */
 .page {
   display: none;
 }
@@ -161,7 +157,6 @@ body::before {
   animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Card */
 .card {
   background: var(--card);
   backdrop-filter: blur(12px);
@@ -200,23 +195,22 @@ body::before {
 .card-icon {
   width: 48px;
   height: 48px;
-  background: var(--card-light); /* Abu-abu gelap untuk latar ikon */
+  background: var(--card-light); 
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: var(--accent); /* Emas untuk ikon */
+  color: var(--accent); 
   transition: transform 0.3s ease;
   animation: scaleIn 0.5s ease;
-  /* Hapus box-shadow glow */
+
 }
 
 .card-icon:hover {
   transform: scale(1.1) rotate(5deg);
 }
 
-/* Form Styling */
 .form-group {
   margin-bottom: 20px;
   animation: fadeInUp 0.5s ease;
@@ -239,7 +233,7 @@ label {
 }
 
 label i {
-  color: var(--accent); /* Emas untuk ikon label */
+  color: var(--accent);
   transition: transform 0.3s ease;
   animation: scaleIn 0.5s ease;
 }
@@ -272,7 +266,6 @@ input::placeholder {
   color: var(--text-muted);
 }
 
-/* Buttons */
 .button-group {
   display: flex;
   gap: 12px;
@@ -293,7 +286,7 @@ button {
 }
 
 button i {
-  color: var(--text); /* Ikon tombol putih krem */
+  color: var(--text);
   transition: transform 0.3s ease;
 }
 
@@ -348,7 +341,6 @@ button.danger:active {
   transform: scale(0.98);
 }
 
-/* Result Tiles */
 .result {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -392,7 +384,7 @@ button.danger:active {
 }
 
 .tile-label i {
-  color: var(--accent); /* Emas untuk ikon tile */
+  color: var(--accent);
   animation: scaleIn 0.5s ease;
 }
 
@@ -407,7 +399,6 @@ button.danger:active {
   color: var(--accent);
 }
 
-/* Alerts */
 .alert {
   padding: 14px 20px;
   border-radius: 12px;
@@ -422,7 +413,7 @@ button.danger:active {
 }
 
 .alert i {
-  color: inherit; /* Warna sesuai tipe alert */
+  color: inherit; 
   animation: scaleIn 0.5s ease;
 }
 
@@ -448,7 +439,6 @@ button.danger:active {
   color: var(--danger);
 }
 
-/* Table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -472,7 +462,7 @@ th {
 }
 
 th i {
-  color: var(--accent); /* Emas untuk ikon tabel */
+  color: var(--accent);
   margin-right: 6px;
   animation: scaleIn 0.5s ease;
 }
@@ -498,7 +488,6 @@ tbody tr:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Stats Cards */
 .stats-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -541,7 +530,7 @@ tbody tr:hover {
 }
 
 .stat-card h4 i {
-  color: var(--accent); /* Emas untuk ikon stat-card */
+  color: var(--accent); 
   animation: scaleIn 0.5s ease;
 }
 
@@ -556,7 +545,6 @@ tbody tr:hover {
   color: var(--accent);
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 48px 24px;
@@ -567,10 +555,10 @@ tbody tr:hover {
 .empty-state i {
   font-size: 4rem;
   margin-bottom: 16px;
-  color: var(--accent); /* Emas untuk ikon empty-state */
+  color: var(--accent); 
   transition: transform 0.3s ease;
   animation: scaleIn 0.5s ease;
-  /* Hapus drop-shadow glow */
+ 
 }
 
 .empty-state i:hover {
@@ -589,7 +577,6 @@ tbody tr:hover {
   gap: 16px;
 }
 
-/* Responsive */
 @media(max-width: 768px) {
   body { padding: 16px; }
   .header h1 { font-size: 1.8rem; }
@@ -604,8 +591,6 @@ tbody tr:hover {
   .card, .tile, .stat-card { animation: fadeIn 0.4s ease; }
   .header-icon, .card-icon, .empty-state i { animation: none; }
 }
-
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
